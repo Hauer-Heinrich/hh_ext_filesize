@@ -24,7 +24,7 @@ $EM_CONF['hh_ext_filesize'] = [
     'constraints' => [
         'depends' => [
             'php' => '>=8',
-            'typo3' => '^11.5.0 || ^12.4.0',
+            'typo3' => '^11.5.0',
         ],
         'conflicts' => [],
         'suggests' => [],

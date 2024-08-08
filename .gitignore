@@ -25,12 +25,14 @@
 *.DS_Store
 .DS_Store
 .AppleDouble
-.LSOverride
+.LSoverwrite
 
 ### other ###
 /install.php
 /symlink.php
 /deploy.php
+/typo3-deploy/
+/deploy/
 ._*
 Desktop.ini
 Thumbs.db
@@ -42,8 +44,5 @@ venv
 node_modules
 .sass-cache
 .vscode/
-
-
-### TYPO3 Extension Builder ###
-/ExtensionBuilder.json
-/Configuration/ExtensionBuilder/
+.githooks/
+/*.zip
