@@ -2,7 +2,7 @@
 
 return [
     'file_HhExtFilesizeTxHhextfilesize' => [
-        'path' => '/file-sizes',
+        'path' => '/module/files/filesizes',
         'access' => 'public',
         'target' => HauerHeinrich\HhExtFilesize\Controller\Backend\FileSizeModuleController::class . '::fileSizesAction',
     ],

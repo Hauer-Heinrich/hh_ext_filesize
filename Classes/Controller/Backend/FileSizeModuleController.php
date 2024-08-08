@@ -59,12 +59,12 @@ final class FileSizeModuleController extends ActionController implements \TYPO3\
         if($this->request->getArguments() != NULL) {
             if($this->request->hasArgument('fileExtensions') && !empty($this->request->getArgument('fileExtensions'))) {
                 $this->fileExtensions = $this->request->getArgument('fileExtensions');
-                $listUrlParams['tx_hhextfilesize_file_hhextfilesizetxhhextfilesize[fileExtensions]'] = $this->fileExtensions;
+                $listUrlParams['fileExtensions'] = $this->fileExtensions;
             }
 
             if($this->request->hasArgument('maxFileSize') && !empty($this->request->getArgument('maxFileSize'))) {
                 $this->maxFileSize = intval($this->request->getArgument('maxFileSize'));
-                $listUrlParams['tx_hhextfilesize_file_hhextfilesizetxhhextfilesize[maxFileSize]'] = $this->maxFileSize;
+                $listUrlParams['maxFileSize'] = $this->maxFileSize;
             }
         }
 
@@ -144,15 +144,6 @@ final class FileSizeModuleController extends ActionController implements \TYPO3\
      * @return string URL
      */
     public function listURL(array $params = []): string {
-        $params = array_replace_recursive([
-            'pointer' => 'tx_hhextfilesize',
-            'id' => 1,
-            'tx_hhextfilesize_file_hhextfilesizetxhhextfilesize[action]' => 'fileSizes',
-            'tx_hhextfilesize_file_hhextfilesizetxhhextfilesize[controller]' => 'Backend\FileSizeModule',
-        ], $params);
-
-        $params = array_filter($params);
-
         return (string)$this->backendUriBuilder->buildUriFromRoute('file_HhExtFilesizeTxHhextfilesize', $params);
     }
 }

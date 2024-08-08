@@ -13,7 +13,7 @@
     </div>
 
     <div class="file-sizes-form">
-        <f:form action="fileSizes" addQueryString="1">
+        <f:form action="{f:be.uri(route: 'file_HhExtFilesizeTxHhextfilesize')}" addQueryString="1">
             <div class="field-container">
                 <label for="field-file-extension">File extensions, seperated by |</label>
                 <f:form.textfield type="text" name="fileExtensions" value="{form.fileExtensions}" placeholder="jpg|png|pdf" id="field-file-extension" />

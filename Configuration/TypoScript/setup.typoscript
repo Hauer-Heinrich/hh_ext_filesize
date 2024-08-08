@@ -1,4 +1,31 @@
 module.tx_hhextfilesize {
+    layoutRootPaths {
+        0 = EXT:hh_ext_filesize/Resources/Private/Layouts/
+        10 = {$module.tx_hhextfilesize.view.layoutRootPath}
+    }
+    partialRootPaths {
+        0 = EXT:hh_ext_filesize/Resources/Private/Partials/
+        10 = {$module.tx_hhextfilesize.view.partialRootPath}
+    }
+    templateRootPaths {
+        0 = EXT:hh_ext_filesize/Resources/Private/Templates/
+        10 = {$module.tx_hhextfilesize.view.templateRootPath}
+    }
+
+    view {
+        layoutRootPaths {
+            0 = EXT:hh_ext_filesize/Resources/Private/Layouts/
+            10 = {$module.tx_hhextfilesize.view.layoutRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:hh_ext_filesize/Resources/Private/Partials/
+            10 = {$module.tx_hhextfilesize.view.partialRootPath}
+        }
+        templateRootPaths {
+            0 = EXT:hh_ext_filesize/Resources/Private/Templates/
+            10 = {$module.tx_hhextfilesize.view.templateRootPath}
+        }
+    }
     settings {
 
     }
