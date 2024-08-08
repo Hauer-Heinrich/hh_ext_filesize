@@ -1,0 +1,54 @@
+.hh-ext-filesize {
+    word-break: break-word;
+
+    & img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    & > .header {
+        margin-bottom: 1.375rem;
+
+        & h1 {
+            margin-bottom: 0;
+        }
+    }
+
+    & .file-sizes-form {
+        & input[type="text"] {
+            padding: 5px;
+        }
+
+        & > form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            & > .btn {
+                margin-bottom: 10px;
+                align-self: flex-end;
+            }
+        }
+
+        & .field-container {
+            margin-bottom: 10px;
+
+            & > label {
+                display: block;
+            }
+        }
+    }
+
+    & .file-sizes-form + .file-sizes {
+        margin-top: 30px;
+    }
+
+    & .file-sizes {
+        & th {
+            &.col-selector {
+                min-width: 100px;
+                width: 100px;
+            }
+        }
+    }
+}

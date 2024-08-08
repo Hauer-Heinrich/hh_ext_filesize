@@ -1,0 +1,64 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:be.pageRenderer pageTitle="foo"
+    includeCssFiles="{0: '{f:uri.resource(path:\'Css/backend/filesizes.css\')}'}"
+    includeJsFiles="{0: '{f:uri.resource(path:\'JavaScript/backend/sortable.min.js\')}'}"
+    addJsInlineLabels="{0: 'label1'}" />
+
+<div class="hh-ext-filesize">
+    <div class="header">
+        <h1>List Filesizes</h1>
+        <p>powered by <a href="https://www.hauer-heinrich.de">www.hauer-heinrich.de</a></p>
+    </div>
+
+    <div class="file-sizes-form">
+        <f:form action="fileSizes" addQueryString="1">
+            <div class="field-container">
+                <label for="field-file-extension">File extensions, seperated by |</label>
+                <f:form.textfield type="text" name="fileExtensions" value="{form.fileExtensions}" placeholder="jpg|png|pdf" id="field-file-extension" />
+            </div>
+            <div class="field-container">
+                <label for="field-file-size">File sizes in KiloBytes (kb)</label>
+                <f:form.textfield type="text" name="maxFileSize" value="{form.maxFileSize}" placeholder="300" id="field-file-size"/>
+            </div>
+            <f:form.button type="submit" class="btn btn-default">Search file sizes</f:form.button>
+        </f:form>
+    </div>
+
+    <div class="file-sizes">
+        <div class="table-fit mb-4">
+            <table id="list-file-sizes" class="table table-striped table-hover sortable" id="typo3-filelist">
+                <thead>
+                    <tr>
+                        <th class="col-selector no-sort"> </th>
+                        <th class="col-title col-responsive"><span class="sort" data-sort="path">Path</span></th>
+                        <th class="col-control no-sort">Control element</th>
+                        <th class=""><span class="sort" data-sort="size">Size</span></th>
+                    </tr>
+                </thead>
+                <tbody data-multi-record-selection-row-selection="true">
+                    <f:for each="{fileSizes}" key="filePath" as="attributes" iteration="i">
+                        <tr data-type="file" data-file-uid="1697" data-metadata-uid="1669" data-typo3-update>
+                            <td class="col-icon">
+                                <img src="{filePath}" alt="" loading="lazy" />
+                            </td>
+                            <td class="col-title col-responsive">
+                                {filePath}
+                            </td>
+                            <td>
+                                <f:format.raw>{attributes.replace}</f:format.raw>
+                            </td>
+                            <td data-sort="{attributes.sizeBytes}">
+                                {attributes.size}
+                            </td>
+                        </tr>
+                    </f:for>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</html>
