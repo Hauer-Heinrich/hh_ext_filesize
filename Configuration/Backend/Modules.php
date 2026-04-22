@@ -11,7 +11,7 @@ return [
         'path' => '/module/files/filesizes',
         'labels' => 'LLL:EXT:hh_ext_filesize/Resources/Private/Language/locallang_mod.xlf',
         'extensionName' => 'HhExtFilesize',
-        'iconIdentifier' => 'tx_examples-backend-module',
+        'iconIdentifier' => 'module-filesize',
         'controllerActions' => [
             FileSizeModuleController::class => [
                 'fileSizes',

@@ -1,7 +1,7 @@
 {
     "name": "hauerheinrich/hh-ext-filesize",
     "type": "typo3-cms-extension",
-    "description": "Hauer-Heinrich - BE Module Filesize",
+    "description": "Hauer-Heinrich - List all file-sizes within given directory which are greater then e. g. 300kb.",
     "authors": [
         {
             "name": "Christian Hackl",
@@ -33,7 +33,7 @@
     },
     "require": {
         "php": ">=8",
-        "typo3/cms-core": "^12.4.0"
+        "typo3/cms-core": "^13.4.0 || ^14.3.0"
     },
     "autoload": {
         "psr-4": {
@@ -49,8 +49,8 @@
         "typo3/cms": {
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".Build/Web",
-            "extension-key": "hh_ext_events",
-            "version": "2.0.0",
+            "extension-key": "hh_ext_filesize",
+            "version": "3.0.0",
             "Package": {
                 "providesPackages": {}
             }

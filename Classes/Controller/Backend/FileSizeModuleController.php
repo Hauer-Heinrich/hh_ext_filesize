@@ -13,7 +13,7 @@ use \TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use \TYPO3\CMS\Backend\Routing\UriBuilder as BackendUriBuilder;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Page\PageRenderer;
-use \TYPO3\CMS\Core\Imaging\Icon;
+use \TYPO3\CMS\Core\Imaging\IconSize;
 use \TYPO3\CMS\Core\Imaging\IconFactory;
 use \TYPO3\CMS\Core\Resource\File;
 use \TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -24,7 +24,7 @@ use \TYPO3\CMS\Core\Resource\StorageRepository;
 final class FileSizeModuleController extends ActionController implements \TYPO3\CMS\Extbase\Mvc\Controller\ControllerInterface {
 
     protected ?ModuleTemplate $moduleTemplate = null;
-    protected string $fileExtensions = 'jpg|jpeg|png';
+    protected string $fileExtensions = 'jpg|jpeg|png|webp';
 
     /**
      * maxFileSize in KB
@@ -56,6 +56,9 @@ final class FileSizeModuleController extends ActionController implements \TYPO3\
 
     public function fileSizesAction(): ResponseInterface {
         $listUrlParams = [];
+        $fileSizes = [];
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+
         if($this->request->getArguments() != NULL) {
             if($this->request->hasArgument('fileExtensions') && !empty($this->request->getArgument('fileExtensions'))) {
                 $this->fileExtensions = $this->request->getArgument('fileExtensions');
@@ -68,10 +71,8 @@ final class FileSizeModuleController extends ActionController implements \TYPO3\
             }
         }
 
-        $fileSizes = [];
-
         try {
-            $selectedDirectory = \explode(':', GeneralUtility::_GET('id')); // PageTree - FileTree
+            $selectedDirectory = \explode(':', $this->request->getQueryParams()['id']); // PageTree - FileTree
             $publicDirectory = rtrim($this->storageRepository->findByCombinedIdentifier($selectedDirectory[0].':')->getStorageRecord()['configuration']['basePath'], '/') .$selectedDirectory[1];
         } catch (\Throwable $th) {
             $publicDirectory = 'fileadmin';
@@ -98,17 +99,17 @@ final class FileSizeModuleController extends ActionController implements \TYPO3\
                             $fullIdentifier = $file->getCombinedIdentifier();
 
                             $attributes = [
-                                'href' => (string)$this->backendUriBuilder->buildUriFromRoute('file_replace', ['target' => $fullIdentifier, 'uid' => $file->getUid(), 'returnUrl' => $listUrl]),
+                                'href' => (string)$this->backendUriBuilder->buildUriFromRoute('file_HhExtFilesizeTxHhextfilesize', ['target' => $fullIdentifier, 'uid' => $file->getUid(), 'returnUrl' => $listUrl]),
                                 'title' => LocalizationUtility::translate('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:cm.replace'),
                             ];
-                            $fileSizes[$arrKey]['replace'] = '<a class="btn btn-default" ' . GeneralUtility::implodeAttributes($attributes, true) . '>' . $this->iconFactory->getIcon('actions-edit-replace', Icon::SIZE_SMALL)->render() . '</a>';
+                            $fileSizes[$arrKey]['replace'] = '<a class="btn btn-default" ' . GeneralUtility::implodeAttributes($attributes, true) . '>' . $this->iconFactory->getIcon('actions-edit-replace', IconSize::SMALL)->render() . '</a>';
                         }
                     }
                 }
             }
         }
 
-        $this->view->assignMultiple([
+        $moduleTemplate->assignMultiple([
             'form' => [
                 'fileExtensions' => $this->fileExtensions,
                 'maxFileSize' => $this->maxFileSize,
@@ -116,8 +117,7 @@ final class FileSizeModuleController extends ActionController implements \TYPO3\
             'fileSizes' => $fileSizes
         ]);
 
-        $this->moduleTemplate->setContent($this->view->render());
-        return $this->htmlResponse($this->moduleTemplate->renderContent());
+        return $moduleTemplate->renderResponse('Backend/FileSizeModule/FileSizes');
     }
 
     public function filesIn(string $path): \Generator {
