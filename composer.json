@@ -1,14 +1,36 @@
 {
     "name": "hauerheinrich/hh-ext-filesize",
     "type": "typo3-cms-extension",
-    "description": "",
+    "description": "Hauer-Heinrich - BE Module Filesize",
     "authors": [
         {
             "name": "Christian Hackl",
+            "email": "info@hauer-heinrich.de",
+            "homepage": "http://www.hauer-heinrich.de",
             "role": "Developer"
         }
     ],
-    "version": "2.0.0",
+    "support": {
+        "issues": "https://github.com/Hauer-Heinrich/hh_ext_filesize/issues",
+        "source": "https://github.com/Hauer-Heinrich/hh_ext_filesize",
+        "docs": "https://github.com/Hauer-Heinrich/hh_ext_filesize/blob/master/README.md"
+    },
+    "funding": [
+        {
+            "type": "paypal",
+            "url": "https://www.paypal.com/paypalme/hauerheinrich"
+        }
+    ],
+    "license": ["GPL-2.0-or-later"],
+    "keywords": [
+        "TYPO3 CMS",
+        "extension",
+        "hauer-heinrich"
+    ],
+    "replace": {
+        "hh_ext_filesize": "self.version",
+        "typo3-ter/hh-ext-filesize": "self.version"
+    },
     "require": {
         "php": ">=8",
         "typo3/cms-core": "^12.4.0"
@@ -23,8 +45,15 @@
             "HauerHeinrich\\HhExtFilesize\\Tests\\": "Tests"
         }
     },
-    "replace": {
-        "hh_ext_filesize": "self.version",
-        "typo3-ter/hh-ext-filesize": "self.version"
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/Web",
+            "extension-key": "hh_ext_events",
+            "version": "2.0.0",
+            "Package": {
+                "providesPackages": {}
+            }
+        }
     }
 }
