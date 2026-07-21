@@ -26,8 +26,10 @@ return [
     //         'replacement' => 'alternative-icon',
     //     ],
     // ],
-    'file-size-icon' => [
+    'module-filesize' => [
+        // Icon provider class
         'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        'source' => 'EXT:hh_ext_filesize/Resources/Public/Icons/file_size_icon.svg',
+        // The source SVG for the SvgIconProvider
+        'source' => 'EXT:hh_ext_filesize/Resources/Public/Icons/module_filesize.svg',
     ],
 ];
