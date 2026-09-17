@@ -20,7 +20,7 @@ $EM_CONF['hh_ext_filesize'] = [
     'uploadfolder' => 0,
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '2.1.0',
+    'version' => '2.1.1',
     'constraints' => [
         'depends' => [
             'php' => '>=8',

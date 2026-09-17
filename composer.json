@@ -28,7 +28,7 @@
         "hauer-heinrich"
     ],
     "replace": {
-        "hh_ext_filesize": "self.version",
+        "hauerheinrich/hh_ext_filesize": "self.version",
         "typo3-ter/hh-ext-filesize": "self.version"
     },
     "require": {
@@ -50,7 +50,7 @@
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".Build/Web",
             "extension-key": "hh_ext_filesize",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "Package": {
                 "providesPackages": {}
             }
